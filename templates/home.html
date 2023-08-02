@@ -37,6 +37,13 @@
                 </div>
             {% endfor %}
         </div>
+        <form method="POST" action="/chat">
+            <div class="form-group">
+                <label for="user_message">Your Message</label>
+                <input type="text" class="form-control" id="user_message" name="user_message">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Send</button>
+        </form>
     </div>
 </div>
 {% endblock %}
