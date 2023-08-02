@@ -14,12 +14,14 @@ def home():
 
     # If the request method is 'POST', the form has been submitted
     if request.method == 'POST':
-        # Get the form data
-        title = request.form.get('title', '')
-        instruction = request.form.get('instruction', '')
-        examples = request.form.get('examples', '')
-        target_task = request.form.get('target_task', '')
-        output_format = request.form.get('output_format', '')
+    # Check if the 'Submit' button was clicked
+        if 'submit_prompt' in request.form:
+            # Get the form data
+            title = request.form.get('title')
+            instruction = request.form.get('instruction')
+            examples = request.form.get('examples')
+            target_task = request.form.get('target_task')
+            output_format = request.form.get('output_format')
 
         # Get the OpenAI API key from the environment variables
         openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -106,4 +108,5 @@ def chat():
     return render_template('home.html', conversation=display_conversation)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
