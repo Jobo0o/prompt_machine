@@ -1,0 +1,24 @@
+body {
+    color: #ffffff;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: .25rem;
+}
+
+.chat-message.user {
+    background-color: #343a40; /* dark grey */
+    color: #ffffff; /* white */
+}
+
+.chat-message.prompt {
+    background-color: #495057; /* slightly darker grey */
+    color: #ffffff; /* white */
+}
+
+.chat-message.assistant {
+    background-color: #28a745; /* green */
+    color: #ffffff; /* white */
+}

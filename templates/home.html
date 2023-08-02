@@ -9,17 +9,34 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ title }}">
             </div>
-            <!-- Repeat for other fields -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="instruction">Instruction</label>
+                <input type="text" class="form-control" id="instruction" name="instruction" value="{{ instruction }}">
+            </div>
+            <div class="form-group">
+                <label for="examples">Examples</label>
+                <textarea class="form-control" id="examples" name="examples" rows="3">{{ examples }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="target_task">Target Task</label>
+                <input type="text" class="form-control" id="target_task" name="target_task" value="{{ target_task }}">
+            </div>
+            <div class="form-group">
+                <label for="output_format">Desired Output Format</label>
+                <input type="text" class="form-control" id="output_format" name="output_format" value="{{ output_format }}">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
     </div>
     <div class="col-md-6">
-        {% if api_response %}
-            <h2 class="mb-4">AI Response</h2>
-            <div class="alert alert-secondary" role="alert">
-                {{ api_response }}
-            </div>
-        {% endif %}
+        <h2 class="mb-4">Conversation</h2>
+        <div class="chat-box bg-dark p-3 mb-4">
+            {% for message in conversation %}
+                <div class="chat-message {{ message.role }} p-2 mb-2 rounded">
+                    {{ message.content }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
