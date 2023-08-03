@@ -22,13 +22,13 @@ To run Prompt Machine, follow these steps:
 1. **Pull the Docker image from Docker Hub:**
    
    ```bash
-   docker pull joschenk/prompt_machine:latest
+   docker pull joschenk/prompt_machine:v2
    ```
 
 2. **Run the Docker container:**
    
    ```bash
-   docker run -p 5000:5000 -e OPENAI_API_KEY=your_openai_api_key joschenk/prompt_machine:latest
+   docker run -p 5000:5000 -e OPENAI_API_KEY=your_openai_api_key joschenk/prompt_machine:v2
    ```
    
    Replace `your_openai_api_key` with your actual OpenAI API key.
