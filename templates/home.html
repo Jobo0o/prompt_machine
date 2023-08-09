@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6">
     <h1 class="mb-4">Prompt Machine</h1>
-    <a href="{{ url_for('api_key_bp.set_api_key') }}" class="btn btn-secondary"
+    <a href="{{ url_for('api_key_bp.set_api_key') }}" class="mb-3 btn btn-secondary"
       >Set API Key</a
     >
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -57,20 +57,23 @@
           value="{{ output_format }}"
         />
       </div>
-      <button type="submit" class="btn btn-primary mt-3" name="submit_prompt">
-        Submit
-      </button>
+    <div class="d-flex align-items-center mt-3">
+        <button type="submit" class="btn btn-primary" name="submit_prompt">Submit Prompt</button>
+        <div class="spinner-border text-primary ml-20" role="status" id="loadingSpinner" style="display: none; margin-left: 12px"></div>
+    </div>
     </form>
   </div>
   <div class="col-md-6">
-    <h2 class="mb-4">Conversation</h2>
+    <h1 class="mb-4">Conversation</h1>
     <div class="chat-box bg-dark p-3 mb-4">
-      {% for message in conversation %}
-      <div class="chat-message {{ message.role }} p-2 mb-2 rounded">
+    {% for message in conversation %}
+    <div class="chat-message {{ message.role }} p-2 mb-2 rounded">
         {{ message.content }}
-      </div>
-      {% endfor %}
     </div>
+    {% endfor %}
+</div>
+
+
     <form method="POST" action="/chat">
       <div class="form-group">
         <label for="user_message">Your Message</label>

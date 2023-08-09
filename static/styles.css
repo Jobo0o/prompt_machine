@@ -1,5 +1,6 @@
 body {
     color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 
 .chat-message {
@@ -9,12 +10,12 @@ body {
 }
 
 .chat-message.user {
-    background-color: #343a40; /* dark grey */
+    background-color: #007BFF; /* a shade of blue */
     color: #ffffff; /* white */
 }
 
 .chat-message.prompt {
-    background-color: #495057; /* slightly darker grey */
+    background-color: #FFC107; /* A shade of amber */
     color: #ffffff; /* white */
 }
 
@@ -24,7 +25,11 @@ body {
 }
 
 .chat-box {
-    max-height: 400px;
+    max-height: 327px;
     overflow-y: auto;
     padding: 2rem;
+}
+
+form {
+    margin-bottom: 30px;
 }

@@ -7,17 +7,24 @@
         <label for="api_key">API Key</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           id="api_key"
           name="api_key"
           required
         />
       </div>
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %}
-      <button type="submit" class="btn btn-primary mt-3">Set API Key</button>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+      <button type="submit" class="btn btn-primary mt-2">Set API Key</button>
     </form>
   </div>
 </div>

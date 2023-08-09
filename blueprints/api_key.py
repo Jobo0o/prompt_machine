@@ -5,6 +5,7 @@ from openai import OpenAIError
 
 api_key_bp = Blueprint('api_key_bp', __name__)
 
+
 @api_key_bp.route('/', methods=['GET'])
 def index():
     # Check if the API key is set in the session
