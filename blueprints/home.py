@@ -4,8 +4,12 @@ import os
 
 home_bp = Blueprint('home_bp', __name__)
 
-@home_bp.route('/', methods=['Get', 'POST'])
+@home_bp.route('/home', methods=['Get', 'POST'])
 def home():
+    # Check if the API key is set
+    if not session.get('openai_api_key'):
+        return redirect(url_for('api_key_bp.set_api_key'))
+    
     # Initialize the variables
     title = instruction = examples = target_task = output_format = api_response = generated_prompt = None
     conversation = []
@@ -23,7 +27,7 @@ def home():
             output_format = request.form.get('output_format')
 
         # Get the OpenAI API key from the environment variables
-        openai.api_key = os.getenv('OPENAI_API_KEY')
+        openai.api_key = session.get('openai_api_key')
 
         # Store the user's message in the conversation history
         display_conversation.append({"role": "user", "content": f"Title: {title}\nInstruction: {instruction}\nExamples: {examples}\nTarget Task: {target_task}\nDesired Output Format: {output_format}"})

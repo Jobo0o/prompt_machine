@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mb-4">Set OpenAI API Key</h1>
+    <form method="POST">
+      <div class="form-group">
+        <label for="api_key">API Key</label>
+        <input
+          type="text"
+          class="form-control"
+          id="api_key"
+          name="api_key"
+          required
+        />
+      </div>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+      <button type="submit" class="btn btn-primary mt-3">Set API Key</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

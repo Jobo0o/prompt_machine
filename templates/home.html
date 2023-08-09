@@ -1,49 +1,88 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="row">
-    <div class="col-md-6">
-        <h1 class="mb-4">Prompt Machine</h1>
-        <form method="POST">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ title }}">
-            </div>
-            <div class="form-group">
-                <label for="instruction">Instruction</label>
-                <input type="text" class="form-control" id="instruction" name="instruction" value="{{ instruction }}">
-            </div>
-            <div class="form-group">
-                <label for="examples">Examples</label>
-                <textarea class="form-control" id="examples" name="examples" rows="3">{{ examples }}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="target_task">Target Task</label>
-                <input type="text" class="form-control" id="target_task" name="target_task" value="{{ target_task }}">
-            </div>
-            <div class="form-group">
-                <label for="output_format">Desired Output Format</label>
-                <input type="text" class="form-control" id="output_format" name="output_format" value="{{ output_format }}">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3" name="submit_prompt">Submit</button>
-        </form>
+  <div class="col-md-6">
+    <h1 class="mb-4">Prompt Machine</h1>
+    <a href="{{ url_for('api_key_bp.set_api_key') }}" class="btn btn-secondary"
+      >Set API Key</a
+    >
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <form method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          value="{{ title }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="instruction">Instruction</label>
+        <input
+          type="text"
+          class="form-control"
+          id="instruction"
+          name="instruction"
+          value="{{ instruction }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="examples">Examples</label>
+        <textarea class="form-control" id="examples" name="examples" rows="3">
+{{ examples }}</textarea
+        >
+      </div>
+      <div class="form-group">
+        <label for="target_task">Target Task</label>
+        <input
+          type="text"
+          class="form-control"
+          id="target_task"
+          name="target_task"
+          value="{{ target_task }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="output_format">Desired Output Format</label>
+        <input
+          type="text"
+          class="form-control"
+          id="output_format"
+          name="output_format"
+          value="{{ output_format }}"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" name="submit_prompt">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h2 class="mb-4">Conversation</h2>
+    <div class="chat-box bg-dark p-3 mb-4">
+      {% for message in conversation %}
+      <div class="chat-message {{ message.role }} p-2 mb-2 rounded">
+        {{ message.content }}
+      </div>
+      {% endfor %}
     </div>
-    <div class="col-md-6">
-        <h2 class="mb-4">Conversation</h2>
-        <div class="chat-box bg-dark p-3 mb-4">
-            {% for message in conversation %}
-                <div class="chat-message {{ message.role }} p-2 mb-2 rounded">
-                    {{ message.content }}
-                </div>
-            {% endfor %}
-        </div>
-        <form method="POST" action="/chat">
-            <div class="form-group">
-                <label for="user_message">Your Message</label>
-                <input type="text" class="form-control" id="user_message" name="user_message">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Send</button>
-        </form>
-    </div>
+    <form method="POST" action="/chat">
+      <div class="form-group">
+        <label for="user_message">Your Message</label>
+        <input
+          type="text"
+          class="form-control"
+          id="user_message"
+          name="user_message"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Send</button>
+    </form>
+  </div>
 </div>
 {% endblock %}

@@ -5,6 +5,8 @@ chat_bp = Blueprint('chat_bp', __name__)
 
 @chat_bp.route('/chat', methods=['POST'])
 def chat():
+    openai.api_key = session.get('openai_api_key')
+
     # Get the user's message from the form
     user_message = request.form.get('user_message')
 

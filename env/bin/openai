@@ -1,4 +1,4 @@
-#!/Users/johannesschenk/Library/CloudStorage/OneDrive-Capgemini/Documents/Github/prompt_machine/env/bin/python3
+#!/Users/johannesschenk/Library/CloudStorage/OneDrive-Capgemini/Documents/Github/prompt_machine/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

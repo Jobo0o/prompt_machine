@@ -4,7 +4,7 @@ body {
 
 .chat-message {
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: .25rem;
 }
 
@@ -21,4 +21,10 @@ body {
 .chat-message.assistant {
     background-color: #28a745; /* green */
     color: #ffffff; /* white */
+}
+
+.chat-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 2rem;
 }
